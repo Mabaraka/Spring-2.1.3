@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class AnimalsCage {
 
-    @Autowired
-    @Qualifier("dog")
     private Animal animal;
+    private Timer timer;
 
     @Autowired
-    private Timer timer;
+    public AnimalsCage(@Qualifier("cat") Animal animal, Timer timer) {
+        this.animal = animal;
+        this.timer = timer;
+    }
 
     public Timer getTimer() {
         return timer;
